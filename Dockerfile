@@ -4,7 +4,7 @@ MAINTAINER Elliot Wright <elliot@elliotwright.co>
 COPY provisioning/start-slave.sh /opt/jenkins-slave-setup/start-slave.sh
 
 RUN \
-    useradd -m jenkins && \
+    useradd -d /opt/jenkins-slave -u 1000 -m -s /bin/bash jenkins && \
     mkdir /opt/jenkins-slave && \
     chown -R jenkins: /opt/jenkins-slave && \
     apt-get update && \
