@@ -1,6 +1,5 @@
 #!/bin/sh
 
-mkdir /opt/jenkins-slave
 cd /opt/jenkins-slave
 
 curl -O http://${MASTER_HOST}/jnlpJars/slave.jar
