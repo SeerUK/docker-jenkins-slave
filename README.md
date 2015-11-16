@@ -5,4 +5,5 @@ Docker Image packaging for Jenkins Slave, image based on Ubuntu 14.04, and Oracl
 When running ensure that the following environment variables are set:
 
  * MASTER_HOST: This is the IP/hostname of the master node.
+ * MASTER_PORT: This is the port of the master node.
  * SLAVE_NAME: The name, in your master node, of the slave you're setting up.
