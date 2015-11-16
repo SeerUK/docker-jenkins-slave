@@ -5,7 +5,7 @@ COPY provisioning/start-slave.sh /opt/jenkins-slave-setup/start-slave.sh
 
 RUN \
     useradd -d /opt/jenkins-slave -u 1000 -m -s /bin/bash jenkins && \
-    mkdir /opt/jenkins-slave && \
+    mkdir -p /opt/jenkins-slave && \
     chown -R jenkins: /opt/jenkins-slave && \
     apt-get update && \
     apt-get install -y build-essential curl git && \
