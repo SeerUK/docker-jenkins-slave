@@ -11,7 +11,9 @@ ENV SLAVE_WORKSPACE /opt/jenkins-slave
 RUN \
     useradd -d /opt/jenkins-slave -u 1000 -m -s /bin/bash jenkins && \
     mkdir -p /opt/jenkins-slave && \
+    mkdir -p /Users && \
     chown -R jenkins: /opt && \
+    chown -R jenkins: /Users && \
     apt-get update && \
     apt-get install -y build-essential curl git && \
     apt-get autoremove && \
