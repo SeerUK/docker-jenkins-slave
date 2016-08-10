@@ -15,7 +15,7 @@ RUN \
     chown -R jenkins: /opt && \
     chown -R jenkins: /Users && \
     apt-get update && \
-    apt-get install -y build-essential curl git && \
+    apt-get install -y build-essential curl git iputils-ping && \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
