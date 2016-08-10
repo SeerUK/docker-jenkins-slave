@@ -1,5 +1,5 @@
-FROM seeruk/docker-java:oracle-java8
-MAINTAINER Elliot Wright <elliot@elliotwright.co>
+FROM seeruk/java:openjdk-java8
+MAINTAINER Elliot Wright <hello@elliotdwright.com>
 
 COPY provisioning/start-slave.sh /opt/jenkins-slave-setup/start-slave.sh
 
