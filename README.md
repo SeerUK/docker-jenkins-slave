@@ -8,11 +8,11 @@ Usage
 
 The following environment variables are available to configure the slave.
 
-* MASTER_HOST: This is the IP/hostname of the master node.
-* MASTER_PORT: This is the port of the master node.
-* SLAVE_NAME: The name, in your master node, of the slave you're setting up.
+* `MASTER_HOST`: This is the IP/hostname of the master node.
+* `MASTER_PORT`: This is the port of the master node.
+* `SLAVE_NAME`: The name, in your master node, of the slave you're setting up.
 
-The slave must have been created in the master node prior to running this container, otherwise the slave will fail to start.
+The slave must have been created in the master node prior to running this container, otherwise the slave will fail to start. When configuring these environment variables, consider whether or not your Jenkins master is also in a Docker container; if it is linked, it may be better to use the hostname and port of the linked container, instead of the exposed host and port.
 
 Notes
 -----
