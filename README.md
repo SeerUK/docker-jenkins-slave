@@ -8,6 +8,7 @@ Usage
 
 The following environment variables are available to configure the slave.
 
+* `JAVA_OPTS`: Used to customise the JVM running the slave. By default sets file encoding to UTF8. 
 * `MASTER_HOST`: This is the IP/hostname of the master node.
 * `MASTER_PORT`: This is the port of the master node.
 * `SLAVE_NAME`: The name, in your master node, of the slave you're setting up.
