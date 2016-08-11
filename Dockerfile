@@ -3,9 +3,10 @@ MAINTAINER Elliot Wright <hello@elliotdwright.com>
 
 COPY provisioning/start-slave.sh /opt/jenkins-slave-setup/start-slave.sh
 
-ENV MASTER_HOST ""
-ENV MASTER_PORT ""
-ENV SLAVE_NAME ""
+ENV JAVA_OPTS "-Dfile.encoding=UTF8"
+ENV MASTER_HOST "jenkins.docker"
+ENV MASTER_PORT "8080"
+ENV SLAVE_NAME "jenkins-slave"
 ENV SLAVE_WORKSPACE /opt/jenkins-slave
 
 RUN \

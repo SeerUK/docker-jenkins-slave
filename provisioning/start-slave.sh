@@ -6,4 +6,4 @@ cd ${SLAVE_WORKSPACE}
 while ! ping -c1 ${MASTER_HOST} > /dev/null; do sleep 0.5; done
 
 curl -O http://${MASTER_HOST}:${MASTER_PORT}/jnlpJars/slave.jar
-java -jar slave.jar -jnlpUrl http://${MASTER_HOST}:${MASTER_PORT}/computer/${SLAVE_NAME}/slave-agent.jnlp
+java ${JAVA_OPTS} -jar slave.jar -jnlpUrl http://${MASTER_HOST}:${MASTER_PORT}/computer/${SLAVE_NAME}/slave-agent.jnlp
