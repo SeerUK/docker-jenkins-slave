@@ -1,6 +1,7 @@
 FROM seeruk/java:openjdk-java8
 MAINTAINER Elliot Wright <hello@elliotdwright.com>
 
+COPY provisioning/docker-entrypoint.sh /opt/jenkins-slave-setup/docker-entrypoint.sh
 COPY provisioning/start-slave.sh /opt/jenkins-slave-setup/start-slave.sh
 
 ENV JAVA_OPTS "-Dfile.encoding=UTF8"
@@ -22,8 +23,11 @@ RUN set -x \
     && apt-get autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && chmod 755 /opt/jenkins-slave-setup/start-slave.sh
+    && chmod +x /opt/jenkins-slave-setup/docker-entrypoint.sh \
+    && chmod +x /opt/jenkins-slave-setup/start-slave.sh
 
 WORKDIR /opt/jenkins-slave-setup
+
+ENTRYPOINT /opt/jenkins-slave-setup/docker-entrypoint.sh
 
 CMD /opt/jenkins-slave-setup/start-slave.sh
