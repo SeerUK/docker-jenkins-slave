@@ -17,17 +17,27 @@ fi
 # Set new home directory for using ~.
 export HOME=${JENKINS_HOME}
 
-echo "==> Creating Jenkins home directory..."
+echo "==> Attempting to create home directory at '${JENKINS_HOME}'."
 
 # Create the home directory, if it doesn't already exist. We won't bother with the skeleton.
-mkdir -p ${JENKINS_HOME}
-chown -R ${JENKINS_UID}:${JENKINS_GID} ${JENKINS_HOME}
+if [ ! -d "${JENKINS_HOME}" ]; then
+    mkdir -p "${JENKINS_HOME}"
+    chown -R ${JENKINS_UID}:${JENKINS_GID} "${JENKINS_HOME}"
+    echo "    Done!"
+else
+    echo "    Already exists!"
+fi
 
-echo "==> Creating workspace directory..."
+echo "==> Attempting to create workspace directory at '${SLAVE_WORKSPACE}'."
 
 # Create the workspace.
-mkdir -p ${SLAVE_WORKSPACE}
-chown -R ${JENKINS_UID}:${JENKINS_GID} ${SLAVE_WORKSPACE}
+if [ ! -d "${SLAVE_WORKSPACE}" ]; then
+    mkdir -p "${SLAVE_WORKSPACE}"
+    chown -R ${JENKINS_UID}:${JENKINS_GID} "${SLAVE_WORKSPACE}"
+    echo "    Done!"
+else
+    echo "    Already exists!"
+fi
 
 echo "==> Running CMD..."
 
