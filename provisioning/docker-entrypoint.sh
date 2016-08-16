@@ -14,9 +14,6 @@ else
     echo "    User 'jenkins' already exists."
 fi
 
-# Set new home directory for using ~.
-export HOME=${JENKINS_HOME}
-
 echo "==> Attempting to create home directory at '${JENKINS_HOME}'."
 
 # Create the home directory, if it doesn't already exist. We won't bother with the skeleton.
@@ -26,6 +23,9 @@ if [ ! -d "${JENKINS_HOME}" ]; then
 else
     echo "    Already exists!"
 fi
+
+# Set new home directory for using ~.
+export HOME=${JENKINS_HOME}
 
 echo "==> Attempting to create workspace directory at '${SLAVE_WORKSPACE}'."
 
