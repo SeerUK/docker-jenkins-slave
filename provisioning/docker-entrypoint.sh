@@ -22,7 +22,6 @@ echo "==> Attempting to create home directory at '${JENKINS_HOME}'."
 # Create the home directory, if it doesn't already exist. We won't bother with the skeleton.
 if [ ! -d "${JENKINS_HOME}" ]; then
     mkdir -p "${JENKINS_HOME}"
-    chown -R ${JENKINS_UID}:${JENKINS_GID} "${JENKINS_HOME}"
     echo "    Done!"
 else
     echo "    Already exists!"
@@ -33,12 +32,17 @@ echo "==> Attempting to create workspace directory at '${SLAVE_WORKSPACE}'."
 # Create the workspace.
 if [ ! -d "${SLAVE_WORKSPACE}" ]; then
     mkdir -p "${SLAVE_WORKSPACE}"
-    chown -R ${JENKINS_UID}:${JENKINS_GID} "${SLAVE_WORKSPACE}"
     echo "    Done!"
 else
     echo "    Already exists!"
 fi
 
+echo "==> Updating home and workspace permissions..."
+
+chown ${JENKINS_UID}:${JENKINS_GID} "${JENKINS_HOME}"
+chown ${JENKINS_UID}:${JENKINS_GID} "${SLAVE_WORKSPACE}"
+
+echo "    Done!"
 echo "==> Running CMD..."
 
 exec gosu jenkins "$@"
