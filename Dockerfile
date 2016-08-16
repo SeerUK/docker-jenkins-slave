@@ -38,7 +38,8 @@ RUN set -x \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && chmod +x /opt/jenkins-slave-setup/docker-entrypoint.sh \
-    && chmod +x /opt/jenkins-slave-setup/start-slave.sh
+    && chmod +x /opt/jenkins-slave-setup/start-slave.sh \
+    && mkdir -p /opt/jenkins-slave-setup/provisioning
 
 WORKDIR /opt/jenkins-slave-setup
 

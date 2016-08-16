@@ -43,6 +43,15 @@ chown ${JENKINS_UID}:${JENKINS_GID} "${JENKINS_HOME}"
 chown ${JENKINS_UID}:${JENKINS_GID} "${SLAVE_WORKSPACE}"
 
 echo "    Done!"
+
+echo "==> Running pre-launch provisioning scripts..."
+for PS in /opt/jenkins-slave-setup/provisioning/*.sh; do
+    echo "    Running '${PS}'..."
+    "${PS}"
+    echo "    Done running '${PS}'."
+done
+echo "    Done!"
+
 echo "==> Running CMD..."
 
 exec gosu jenkins "$@"
