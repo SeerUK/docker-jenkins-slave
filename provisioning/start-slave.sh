@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Wait a little for Jenkins to start before trying to ping it...
+sleep 5
+
 # Attempt to wait for host to be ready...
 while ! ping -c1 ${MASTER_HOST} > /dev/null; do sleep 0.5; done
 
