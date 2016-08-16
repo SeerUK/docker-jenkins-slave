@@ -2,11 +2,11 @@
 
 set -e
 
-# The home directory will hopefully be in either /home or /Users. The jenkins user has access to
-# create directories there.
-mkdir -p ${SLAVE_HOME}
+# Create the user with the given home directory.
+echo "Creating user with UID:GID of ${JENKINS_UID}:${JENKINS_GID}"
+useradd -s /bin/bash -u ${JENKINS_UID} -g ${JENKINS_GID} -d ${JENKINS_HOME} -m -o jenkins
 
 # Set new home directory for using ~.
-export HOME=${SLAVE_HOME}
+export HOME=${JENKINS_HOME}
 
-exec "$@"
+exec gosu jenkins "$@"
