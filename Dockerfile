@@ -4,7 +4,7 @@ MAINTAINER Elliot Wright <hello@elliotdwright.com>
 COPY provisioning/docker-entrypoint.sh /opt/jenkins-slave-setup/docker-entrypoint.sh
 COPY provisioning/start-slave.sh /opt/jenkins-slave-setup/start-slave.sh
 
-ENV GOSU_VERSION 1.9
+ENV GOSU_VERSION 1.10
 ENV LC_ALL en_US.UTF-8
 ENV JAVA_OPTS "-Dfile.encoding=UTF8"
 ENV JENKINS_UID 1000
